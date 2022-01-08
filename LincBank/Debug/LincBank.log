@@ -1,0 +1,4 @@
+﻿  LincBank.cpp
+C:\Users\Mitch\source\repos\LincBank\LincBank\LincBank.cpp(20,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Mitch\source\repos\LincBank\LincBank\Implementation.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  LincBank.vcxproj -> C:\Users\Mitch\source\repos\LincBank\Debug\LincBank.exe
