@@ -6,52 +6,57 @@ class Transaction {
 private:
 	string desc;
 	time_t time_Stamp;
-	float value;
+	double value;
 public:
 	void set_Desc(string d);
 	void set_Time_Stamp();
-	void set_Value(float v);
+	void set_Value(double v);
 	string get_Desc();
 	char* get_Time_Stamp();
-	float get_Value();
+	double get_Value();
 	void to_String();
-	Transaction(string d, float v);
+	Transaction(string d, double v);
 };
 
 class Account {
 private:
 	vector<Transaction> history;
-	float balance;
+	double balance;
 public:
-	virtual void deposit(float v) = 0;
-	virtual void withdraw(float v) = 0;
+	virtual void deposit(double v) = 0;
+	virtual void withdraw(double v) = 0;
 	virtual void to_String() = 0;
-	void set_Balance(float b);
-	float get_Balance();
+	void set_Balance(double b);
+	double get_Balance();
 	void set_History(Transaction t);
+	vector<Transaction> get_History();
 };
 
 class Intrest_Earning {
 public:
-	void compute_Intrest();
+	virtual double compute_Intrest(int t) = 0;
 };
 
 class Current : public Account {
 private:
-	float overdraft;
+	double overdraft;
 public:
 	void to_String() override;
-	void set_Overdraft(float o);
-	float get_Overdraft();
-	Current(float v);
-	void deposit(float v);
-	void withdraw(float v);
+	void set_Overdraft(double o);
+	double get_Overdraft();
+	Current(double v);
+	void deposit(double v) override;
+	void withdraw(double v) override;
 };
 
-class Savings : public Account , public Intrest_Earning {
+class Savings : public Account, public Intrest_Earning {
 private:
-	float intrest_Rate;
+	double intrest_Rate;
 	bool isa;
 public:
+	Savings(double v, bool b);
 	void to_String() override;
+	double compute_Intrest(int t) override;
+	void deposit(double v) override;
+	void withdraw(double v) override;
 };

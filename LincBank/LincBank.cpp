@@ -22,18 +22,19 @@ using namespace std;
 
 int main()
 {
-	vector <std::string> parameters;
+	vector <Account*> accounts;
+	vector <string> parameters;
 	string userCommand;
 	// you may also want to store a collection of opened accounts here
 
-	cout << "~~~ Welcome to LincBank! ~~~" << std::endl;
+	cout << "~~~ Welcome to LincBank! ~~~" << endl;
 
 	while (userCommand != "exit")
 	{
 		parameters.clear(); // clear ready for next command
-		cout << std::endl << ">>> ";
+		cout << endl << ">>> ";
 
-		getline(std::cin, userCommand);
+		getline(cin, userCommand);
 		char* cstr = new char[userCommand.length() + 1];
 		strcpy(cstr, userCommand.c_str());
 
@@ -55,6 +56,11 @@ int main()
 		}
 		else if (command.compare("open") == 0)
 		{
+			if (parameters[1] == "1")
+			{
+				Current c(stod(parameters[2]));
+				c.to_String();
+			}
 			// allow a user to open an account
 			// e.g., Account* a = new Savings(...);
 		}
