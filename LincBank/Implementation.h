@@ -79,19 +79,36 @@ void Current::to_String()
 {
 	cout << "Current Account" << endl;
 	cout << "Current balance is: " << char(156) << get_Balance() << endl;
-	cout << "Current overdraft is: " << char(156) << overdraft << endl;
-	for (int i = 0; i < get_History().size(); i++)
+	cout << "Current overdraft is: " << char(156) << overdraft << "\n" << endl;
+	if (get_History().size() < 5)
 	{
-		get_History()[i].to_String();
+		for (int i = 0; i < get_History().size(); i++)
+		{
+			get_History()[i].to_String();
+		}
+	}
+	else if (get_History().size() > 5)
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			get_History()[i].to_String();
+		}
 	}
 }
 //Constructor for Current class.
 Current::Current(double v)
 {
-	Transaction t("Initial Deposit", v);
-	overdraft = 500;
-	set_History(t);
-	set_Balance(v);
+	if (v == 0)
+	{
+		overdraft = 500;
+	}
+	else
+	{
+		Transaction t("Initial Deposit", v);
+		overdraft = 500;
+		set_History(t);
+		set_Balance(v);
+	}
 }
 //Deposit functon.
 void Current::deposit(double v)
@@ -176,13 +193,13 @@ void Current::withdraw(double v)
 //Savings
 Savings::Savings(double v, bool b)
 {
-	Transaction t("Initial Deposit", v);
-	set_History(t);
-	set_Balance(v);
 	if (b == true and v >= 1000)
 	{
 		isa = true;
 		intrest_Rate = 0.0115;
+		Transaction t("Initial Deposit", v);
+		set_History(t);
+		set_Balance(v);
 	}
 	else if (b == true and v < 1000)
 	{
@@ -190,8 +207,19 @@ Savings::Savings(double v, bool b)
 	}
 	else if (b == false)
 	{
-		isa = false;
-		intrest_Rate = 0.0085;
+		if (v == 0)
+		{
+			isa = false;
+			intrest_Rate = 0.0085;
+		}
+		else
+		{
+			isa = false;
+			intrest_Rate = 0.0085;
+			Transaction t("Initial Deposit", v);
+			set_History(t);
+			set_Balance(v);
+		}
 	}
 }
 double Savings::compute_Intrest(int t)
@@ -234,8 +262,19 @@ void Savings::to_String()
 		cout << "Savings Account" << endl;
 	}
 	cout << "Current balance is: " << char(156) << get_Balance() << endl;
-	for (int i = 0; i < get_History().size(); i++)
+	
+	if (get_History().size() < 5)
 	{
-		get_History()[i].to_String();
+		for (int i = 0; i < get_History().size(); i++)
+		{
+			get_History()[i].to_String();
+		}
+	}
+	else 
+	{
+		for (int i = 0; i < 5; i++)
+		{
+			get_History()[i].to_String();
+		}
 	}
 }

@@ -25,6 +25,8 @@ int main()
 	vector <Account*> accounts;
 	vector <string> parameters;
 	string userCommand;
+	bool currentBit = (false);
+	bool isaBit = (false);
 	// you may also want to store a collection of opened accounts here
 
 	cout << "~~~ Welcome to LincBank! ~~~" << endl;
@@ -62,31 +64,104 @@ int main()
 			cout << "Type open followed by the account type and opening amount, example: open 1 500" << endl;
 			cout << "(1) = Current, (2) = Savings, (3) = ISA." << endl;
 			cout << "!Warning! Only one ISA and Current account can be opened, ISA accounts must be opened with atleast 1000 GBP" << endl;
+			cout << "Type view to see all accounts and recent transactions or, \nview followed by the account number to see the specific account" << endl;
 			cout << "Type options to see this list again." << endl;
+			cout << "Type exit to leave program" << endl;
 				
 			// display the various commands to the user
 		}
 		else if (command.compare("open") == 0)
 		{
-			if (parameters[1] == "1")
+			if (parameters[1] == "1" and currentBit == false)
 			{
-				Current c(stod(parameters[2]));
-				c.to_String();
+				Current* c = new Current(stod(parameters[2]));
+				accounts.push_back(c);
+				currentBit = true;
+			}
+			else if (parameters[1] == "1" and currentBit == true)
+			{
+				cout << "Current account alread opened cannot open another!" << endl;
+			}
+			else if (parameters[1] == "2")
+			{
+				Savings* s = new Savings(stod(parameters[2]), false);
+				accounts.push_back(s);
+			}
+			else if (parameters[1] == "3" and isaBit == false and stod(parameters[2]) >= 1000)
+			{
+				Savings* isa = new Savings(stod(parameters[2]), true);
+				accounts.push_back(isa);
+				isaBit = true;
+			}
+			else if (parameters[1] == "3" and isaBit == false and stod(parameters[2]) < 1000)
+			{
+				cout << "Account cannot be opened unless 1000 GBP is deposited" << endl;
+			}
+			else if (parameters[1] == "3" and isaBit == true)
+			{
+				cout << "ISA account alread opened cannot open another!" << endl;
+			}
+			else
+			{
+				cout << "Invalid entry: (1) = Current, (2) = Savings, (3) = ISA. " << endl;
 			}
 			// allow a user to open an account
 			// e.g., Account* a = new Savings(...);
 		}
 		else if (command.compare("view") == 0)
 		{
+			if (userCommand == "view" and accounts.size() <= 0)
+			{
+				cout << "No accounts open!" << endl;
+			}
+			else if (userCommand == "view" and accounts.size() > 0)
+			{
+				for (int i = 0; i < accounts.size(); i++)
+				{
+					accounts[i]->to_String();
+				}
+			}
+			else if (stoi(parameters[1]) > accounts.size() or stoi(parameters[1]) == 0)
+			{
+				cout << "Account does not exsist currently there are " << accounts.size() << " accounts open" << endl;
+			}
+			else if (stoi(parameters[1]) > 0 and accounts.size() > 0)
+			{
+				accounts[stoi(parameters[1]) - 1]->to_String();
+			}
 			// display an account according to an index (starting from 1)
 			// alternatively, display all accounts if no index is provided
 		}
 		else if (command.compare("withdraw") == 0)
 		{
+			if (userCommand == "withdraw")
+			{
+				cout << "Invalid entry: please follow with account number and amount" << endl;
+			}
+			else if (stoi(parameters[1]) > accounts.size() or stoi(parameters[1]) == 0)
+			{
+				cout << "Account does not exsist currently there are " << accounts.size() << " accounts open" << endl;
+			}
+			else if (stoi(parameters[1]) > 0)
+			{
+				accounts[stoi(parameters[1]) - 1]->withdraw(stoi(parameters[2]));
+			}
 			// allow user to withdraw funds from an account
 		}
 		else if (command.compare("deposit") == 0)
 		{
+			if (userCommand == "deposit")
+			{
+				cout << "Invalid entry: please follow with account number and amount" << endl;
+			}
+			else if (stoi(parameters[1]) > accounts.size() or stoi(parameters[1]) == 0)
+			{
+				cout << "Account does not exsist currently there are " << accounts.size() << " accounts open" << endl;
+			}
+			else if (stoi(parameters[1]) > 0)
+			{
+				accounts[stoi(parameters[1]) - 1]->deposit(stoi(parameters[2]));
+			}
 			// allow user to deposit funds into an account
 		}
 		else if (command.compare("transfer") == 0)

@@ -1,6 +1,10 @@
 ﻿  LincBank.cpp
 C:\Users\Mitch\source\repos\LincBank\LincBank\LincBank.cpp(20,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\Mitch\source\repos\LincBank\LincBank\Implementation.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Mitch\source\repos\LincBank\LincBank\Implementation.h(92,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Mitch\source\repos\LincBank\LincBank\Implementation.h(246,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Mitch\source\repos\LincBank\LincBank\Implementation.h(85,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Mitch\source\repos\LincBank\LincBank\Implementation.h(268,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Mitch\source\repos\LincBank\LincBank\LincBank.cpp(119,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Mitch\source\repos\LincBank\LincBank\LincBank.cpp(124,33): warning C4018: '>': signed/unsigned mismatch
+C:\Users\Mitch\source\repos\LincBank\LincBank\LincBank.cpp(141,33): warning C4018: '>': signed/unsigned mismatch
+C:\Users\Mitch\source\repos\LincBank\LincBank\LincBank.cpp(157,33): warning C4018: '>': signed/unsigned mismatch
   LincBank.vcxproj -> C:\Users\Mitch\source\repos\LincBank\Debug\LincBank.exe
