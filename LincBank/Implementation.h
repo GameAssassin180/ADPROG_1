@@ -9,18 +9,9 @@ using namespace std;
 //Transaction class methods.
 //Accessors Methods.
 //Setting.
-void Transaction::set_Desc(string d)
-{
-	desc = d;
-}
-void Transaction::set_Time_Stamp()
-{
-	time_Stamp = time(0);
-}
-void Transaction::set_Value(double v)
-{
-	value = v;
-}
+void Transaction::set_Desc(string d){desc = d;}
+void Transaction::set_Time_Stamp(){time_Stamp = time(0);}
+void Transaction::set_Value(double v){value = v;}
 //Getting.
 string Transaction::get_Desc()
 {

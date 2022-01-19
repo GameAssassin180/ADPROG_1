@@ -28,6 +28,7 @@ int main()
 	// you may also want to store a collection of opened accounts here
 
 	cout << "~~~ Welcome to LincBank! ~~~" << endl;
+	cout << "~~~ Type options for commands ~~~" << endl;
 
 	while (userCommand != "exit")
 	{
@@ -35,6 +36,10 @@ int main()
 		cout << endl << ">>> ";
 
 		getline(cin, userCommand);
+		if (userCommand.empty())
+		{
+			continue;
+		}
 		char* cstr = new char[userCommand.length() + 1];
 		strcpy(cstr, userCommand.c_str());
 
@@ -50,8 +55,15 @@ int main()
 		// Define all commands as per the brief
 		string command = parameters[0];
 
+
 		if (command.compare("options") == 0)
 		{
+			cout << "These are the options avalible to you: " << endl;
+			cout << "Type open followed by the account type and opening amount, example: open 1 500" << endl;
+			cout << "(1) = Current, (2) = Savings, (3) = ISA." << endl;
+			cout << "!Warning! Only one ISA and Current account can be opened, ISA accounts must be opened with atleast 1000 GBP" << endl;
+			cout << "Type options to see this list again." << endl;
+				
 			// display the various commands to the user
 		}
 		else if (command.compare("open") == 0)
