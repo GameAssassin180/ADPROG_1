@@ -101,6 +101,7 @@ Current::Current(double v)
 	if (v == 0)
 	{
 		overdraft = 500;
+		account_Type = 1;
 	}
 	else
 	{
@@ -108,6 +109,7 @@ Current::Current(double v)
 		overdraft = 500;
 		set_History(t);
 		set_Balance(v);
+		account_Type = 1;
 	}
 }
 //Deposit functon.
@@ -200,6 +202,7 @@ Savings::Savings(double v, bool b)
 		Transaction t("Initial Deposit", v);
 		set_History(t);
 		set_Balance(v);
+		account_Type = 3;
 	}
 	else if (b == true and v < 1000)
 	{
@@ -211,6 +214,7 @@ Savings::Savings(double v, bool b)
 		{
 			isa = false;
 			intrest_Rate = 0.0085;
+			account_Type = 2;
 		}
 		else
 		{
@@ -219,6 +223,7 @@ Savings::Savings(double v, bool b)
 			Transaction t("Initial Deposit", v);
 			set_History(t);
 			set_Balance(v);
+			account_Type = 2;
 		}
 	}
 }
@@ -261,7 +266,7 @@ void Savings::to_String()
 	{
 		cout << "Savings Account" << endl;
 	}
-	cout << "Current balance is: " << char(156) << get_Balance() << endl;
+	cout << "Current balance is: " << char(156) << get_Balance() << "\n" << endl;
 	
 	if (get_History().size() < 5)
 	{

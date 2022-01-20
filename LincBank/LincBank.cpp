@@ -166,6 +166,18 @@ int main()
 		}
 		else if (command.compare("transfer") == 0)
 		{
+			if (accounts[stoi(parameters[1]) - 1]->account_Type == 1)
+			{
+				//cout << accounts[stoi(parameters[1]) - 1] << endl;
+			}
+			else if (accounts[stoi(parameters[1]) - 1]->account_Type == 2)
+			{
+				
+			}
+			else if (accounts[stoi(parameters[1]) - 1]->account_Type == 3)
+			{
+				
+			}
 			// allow user to transfer funds between accounts
 			// i.e., a withdrawal followed by a deposit!
 		}

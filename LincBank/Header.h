@@ -30,6 +30,7 @@ public:
 	double get_Balance();
 	void set_History(Transaction t);
 	vector<Transaction> get_History();
+	int account_Type = 0;
 };
 
 class Intrest_Earning {
@@ -42,9 +43,9 @@ private:
 	double overdraft;
 public:
 	void to_String() override;
+	Current(double v);
 	void set_Overdraft(double o);
 	double get_Overdraft();
-	Current(double v);
 	void deposit(double v) override;
 	void withdraw(double v) override;
 };
