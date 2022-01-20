@@ -23,6 +23,8 @@ private:
 	vector<Transaction> history;
 	double balance;
 public:
+	virtual double get_Overdraft() { return 0; }
+	virtual double compute_Intrest() { return 0; }
 	virtual void deposit(double v) = 0;
 	virtual void withdraw(double v) = 0;
 	virtual void to_String() = 0;

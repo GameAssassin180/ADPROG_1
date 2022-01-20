@@ -168,7 +168,15 @@ int main()
 		{
 			if (accounts[stoi(parameters[1]) - 1]->account_Type == 1)
 			{
-				//cout << accounts[stoi(parameters[1]) - 1] << endl;
+				if ((accounts[stoi(parameters[1]) - 1]->get_Overdraft() + accounts[stoi(parameters[1]) - 1]->get_Balance()) < stoi(parameters[3]))
+				{
+					cout << "Transfer cannot be made dude to insufficient funds in the account!" << endl;
+				}
+				else if ((accounts[stoi(parameters[1]) - 1]->get_Overdraft() + accounts[stoi(parameters[1]) - 1]->get_Balance()) >= stoi(parameters[3]))
+				{
+					accounts[stoi(parameters[1]) - 1]->withdraw(stoi(parameters[3]));
+					accounts[stoi(parameters[2]) - 1]->withdraw(stoi(parameters[3]));
+				}
 			}
 			else if (accounts[stoi(parameters[1]) - 1]->account_Type == 2)
 			{
