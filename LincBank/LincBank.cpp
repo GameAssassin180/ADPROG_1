@@ -103,7 +103,7 @@ int main()
 			}
 			else if (parameters[1] == "1" and currentBit == true)	// If the user enters 1 and the current bit is true.
 			{
-				cout << ">>> Current account alread opened cannot open another!" << endl;
+				cout << ">>> Current account already opened cannot open another!" << endl;
 			}
 			else if (parameters[1] == "2")	// If the user enters 2
 			{
@@ -159,7 +159,7 @@ int main()
 			}
 			else if (stoi(parameters[1]) > accounts.size() or stoi(parameters[1]) == 0)	// If the user enters view followed by a number and that index is bigger then the accounts entered.
 			{
-				cout << ">>> Account does not currently exsist, there are " << accounts.size() << " accounts open" << endl;
+				cout << ">>> Account does not currently exist, there are " << accounts.size() << " accounts open" << endl;
 			}
 			else if (stoi(parameters[1]) > 0 and accounts.size() > 0)	// If the user enters a specific account.
 			{
@@ -185,9 +185,9 @@ int main()
 				cout << ">>> Please enter numbers for account and values." << endl;
 				continue;
 			}
-			else if (stoi(parameters[1]) > accounts.size() or stoi(parameters[1]) == 0)	//	If the user enters an account that doesnt exsist or number 0. 
+			else if (stoi(parameters[1]) > accounts.size() or stoi(parameters[1]) == 0)	//	If the user enters an account that doesnt exist or number 0. 
 			{
-				cout << ">>> Account does not currently exsist, there are " << accounts.size() << " accounts open" << endl;
+				cout << ">>> Account does not currently exist, there are " << accounts.size() << " accounts open" << endl;
 			}
 			else if (stoi(parameters[1]) > 0)	// If the account entered is greater then 0.
 			{
@@ -212,11 +212,11 @@ int main()
 				cout << ">>> Please enter numbers for account and values." << endl;
 				continue;
 			}
-			else if (stoi(parameters[1]) > accounts.size() or stoi(parameters[1]) == 0)	// If the user enters an account that doesnt exsist.
+			else if (stoi(parameters[1]) > accounts.size() or stoi(parameters[1]) == 0)	// If the user enters an account that doesnt exist.
 			{
-				cout << ">>> Account does not currently exsist, there are " << accounts.size() << " accounts open" << endl;
+				cout << ">>> Account does not currently exist, there are " << accounts.size() << " accounts open" << endl;
 			}
-			else if (stoi(parameters[1]) > 0)	// If the user enters an account that exsists.
+			else if (stoi(parameters[1]) > 0)	// If the user enters an account that exists.
 			{
 				accounts[stoi(parameters[1]) - 1]->deposit(stod(parameters[2]));	// Runs the deposit commenad for the account specified.
 			}
@@ -239,15 +239,15 @@ int main()
 				cout << ">>> Please enter numbers for account and values." << endl;
 				continue;
 			}
-			else if (stoi(parameters[1]) > accounts.size() or stoi(parameters[1]) == 0 or stoi(parameters[2]) > accounts.size() or stoi(parameters[2]) == 0)	// If the user enters any accounts that dont exsist.
+			else if (stoi(parameters[1]) > accounts.size() or stoi(parameters[1]) == 0 or stoi(parameters[2]) > accounts.size() or stoi(parameters[2]) == 0)	// If the user enters any accounts that dont exist.
 			{
-				cout << ">>> Account does not currently exsist, there are " << accounts.size() << " accounts open" << endl;
+				cout << ">>> Account does not currently exist, there are " << accounts.size() << " accounts open" << endl;
 			}
 			else if (accounts[stoi(parameters[1]) - 1]->account_Type == 1)	// If the first account entered is a current account.
 			{
 				if ((accounts[stoi(parameters[1]) - 1]->get_Overdraft() + accounts[stoi(parameters[1]) - 1]->get_Balance()) < stoi(parameters[3]))	// If the Current account doesnt have sufficient funds.
 				{
-					cout << ">>> Transfer cannot be made dude to insufficient funds in the account!" << endl;
+					cout << ">>> Transfer cannot be made due to insufficient funds in the account!" << endl;
 				}
 				else if ((accounts[stoi(parameters[1]) - 1]->get_Overdraft() + accounts[stoi(parameters[1]) - 1]->get_Balance()) >= stoi(parameters[3]))	// If the current account does have sufficient funds.
 				{
@@ -259,7 +259,7 @@ int main()
 			{
 				if (accounts[stoi(parameters[1]) - 1]->get_Balance() < stoi(parameters[3]))	// If the account doesnt have suffiecient funds.
 				{
-					cout << ">>> Transfer cannot be made dude to insufficient funds in the account!" << endl;
+					cout << ">>> Transfer cannot be made due to insufficient funds in the account!" << endl;
 				}
 				else if (accounts[stoi(parameters[1]) - 1]->get_Balance() >= stoi(parameters[3]))	// If the account does have sufficient funds.
 				{
@@ -287,9 +287,9 @@ int main()
 				cout << ">>> Please enter numbers for account and values." << endl;
 				continue;
 			}
-			else if ((stoi(parameters[1]) > accounts.size()) or (stoi(parameters[1]) == 0))	// If the user enters an account that doesnt exsist.
+			else if ((stoi(parameters[1]) > accounts.size()) or (stoi(parameters[1]) == 0))	// If the user enters an account that doesnt exist.
 			{
-				cout << ">>> Account does not currently exsist, there are " << accounts.size() << " accounts open" << endl;
+				cout << ">>> Account does not currently exist, there are " << accounts.size() << " accounts open" << endl;
 			}
 			else if (accounts[stoi(parameters[1]) - 1]->account_Type == 2)	// If the account type is a savings account.
 			{
@@ -298,7 +298,7 @@ int main()
 			}
 			else if (accounts[stoi(parameters[1]) - 1]->account_Type == 1)	// If the acount type is a Current account. 
 			{
-				cout << ">>> Account type does not gain intrest!" << endl;
+				cout << ">>> Account type does not gain interest!" << endl;
 			}
 			// compute compound interest t years into the future
 		}
